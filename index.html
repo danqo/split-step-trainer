@@ -3,37 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Netlify App</title>
+    <title>Random Direction Arrow</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🚀 Welcome to My Netlify App</h1>
-            <p>This application is ready to be deployed on Netlify!</p>
-        </header>
-        
         <main>
-            <div class="card">
-                <h2>Getting Started</h2>
-                <p>This is a simple static site that's ready for Netlify deployment.</p>
-                <button id="clickBtn" class="btn">Click Me!</button>
-                <p id="message" class="message"></p>
+            <div class="direction-display">
+                <div class="arrow-container">
+                    <svg id="arrow" class="arrow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Solid arrow: rectangular shaft with rounded corners -->
+                        <rect x="30" y="88" width="85" height="24" rx="4" ry="4" fill="#000" />
+                        <!-- Even larger triangular arrowhead -->
+                        <polygon points="110,65 110,135 170,100" fill="#000" />
+                    </svg>
+                </div>
+                <div class="countdown-display" id="countdownDisplay" style="display: none;">
+                    Next change in: <span id="countdownText">0</span>s
+                </div>
             </div>
             
-            <div class="card">
-                <h2>Next Steps</h2>
-                <ol>
-                    <li>Push this code to a GitHub repository</li>
-                    <li>Connect your GitHub account to Netlify</li>
-                    <li>Deploy your site with one click!</li>
-                </ol>
+            <div class="settings">
+                <div class="settings-header">
+                    <span>Settings</span>
+                    <button id="toggleSettings" class="collapse-btn">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 4 L6 8 L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="settings-content" id="settingsContent">
+                    <div class="setting-group">
+                        <label for="darkMode" class="toggle-label">
+                            <input type="checkbox" id="darkMode" />
+                            <span>Dark mode</span>
+                        </label>
+                    </div>
+                    <div class="setting-group">
+                        <label for="showCountdown" class="toggle-label">
+                            <input type="checkbox" id="showCountdown" />
+                            <span>Show countdown</span>
+                        </label>
+                    </div>
+                    <div class="setting-group">
+                        <label for="minInterval">Min Interval (seconds):</label>
+                        <input type="number" id="minInterval" min="1" max="60" value="1" />
+                    </div>
+                    <div class="setting-group">
+                        <label for="maxInterval">Max Interval (seconds):</label>
+                        <input type="number" id="maxInterval" min="1" max="60" value="5" />
+                    </div>
+                    <div class="error-message" id="errorMessage"></div>
+                </div>
             </div>
         </main>
-        
-        <footer>
-            <p>Built with ❤️ for Netlify</p>
-        </footer>
     </div>
     
     <script src="script.js"></script>
