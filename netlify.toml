@@ -1,0 +1,14 @@
+# Netlify configuration file
+[build]
+  # Build command (if you need one)
+  # command = "npm run build"
+  
+  # Publish directory (for static sites, this is usually the root)
+  publish = "."
+
+# Redirect rules (optional)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
