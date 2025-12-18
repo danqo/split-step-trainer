@@ -32,13 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let timeRemaining = 0;
     let nextChangeTime = 0;
     
-    // Function to get a random direction (different from current)
     function getRandomDirection() {
-        let newDirection;
-        do {
-            newDirection = Math.floor(Math.random() * directions.length);
-        } while (newDirection === currentDirection && directions.length > 1);
-        return newDirection;
+        return Math.floor(Math.random() * directions.length);
     }
     
     // Function to validate and update intervals
