@@ -327,6 +327,7 @@ main {
     .arrow {
         width: 120px;
         height: 120px;
+        color: #000;
     }
     
     .direction-text {
@@ -342,6 +343,10 @@ body.dark-mode {
 body.dark-mode .container {
     background: #2d2d44;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .arrow {
+    color: #e0e0e0;
 }
 
 body.dark-mode .arrow-container {
