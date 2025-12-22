@@ -115,6 +115,30 @@
             </div>
         </main>
     </div>
+    
+    <!-- Fullscreen overlay -->
+    <div id="fullscreenView" class="fullscreen-view hidden">
+        <!-- Exit fullscreen button -->
+        <button id="exitFullscreen" class="exit-fullscreen" title="Exit Fullscreen">
+        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+        </button>
+
+        <!-- Large fullscreen arrow container -->
+        <div class="fullscreen-arrow-container">
+            <svg id="fullscreenArrow" class="arrow large-arrow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <rect x="30" y="88" width="85" height="24" rx="4" ry="4" fill="currentColor" />
+                <polygon points="110,65 110,135 170,100" fill="currentColor" />
+            </svg>
+        </div>   
+
+        <!-- Progress bar -->
+        <div class="progress-bar-container fullscreen-progress">
+            <div id="fullscreen-progress-bar"></div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
