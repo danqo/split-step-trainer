@@ -1,3 +1,4 @@
+/* Core layout and theme */
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +15,7 @@ body {
     padding: 20px;
 }
 
+/* Container */
 .container {
     max-width: 600px;
     width: 100%;
@@ -23,6 +25,7 @@ body {
     overflow: hidden;
 }
 
+/* Header */
 header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -40,6 +43,7 @@ header p {
     opacity: 0.9;
 }
 
+/* Main content */
 main {
     padding: 40px 20px;
     display: flex;
@@ -48,6 +52,7 @@ main {
     overflow: visible;
 }
 
+/* Arrow display */
 .direction-display {
     width: 100%;
     display: flex;
@@ -86,6 +91,7 @@ main {
     transition: opacity 0.3s;
 }
 
+/* Countdown */
 .countdown-display {
     font-size: 1.1em;
     color: #666;
@@ -94,12 +100,7 @@ main {
     text-align: center;
 }
 
-.countdown {
-    font-size: 1em;
-    color: #666;
-    font-weight: 500;
-}
-
+/* Controls */
 .controls {
     display: flex;
     gap: 15px;
@@ -136,6 +137,7 @@ main {
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
 }
 
+/* Settings */
 .settings {
     width: 100%;
     max-width: 400px;
@@ -190,10 +192,10 @@ main {
 }
 
 .settings-content {
-    padding: 20px;
-    max-height: 1000px;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    max-height: 2000px;
+    padding: 20px;
 }
 
 .settings-content.collapsed {
@@ -201,6 +203,19 @@ main {
     padding: 0 20px;
 }
 
+.settings-content * {
+    transition: opacity 0.3s ease;
+}
+
+.settings-content.collapsed * {
+    opacity: 0;
+}
+
+.settings-content:not(.collapsed) * {
+    opacity: 1;
+}
+
+/* Setting groups */
 .setting-group {
     display: flex;
     flex-direction: column;
@@ -247,160 +262,118 @@ main {
     border-color: #667eea;
 }
 
+/* Direction options – clean 2x3 arrow grid */
+.direction-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 20px 40px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.direction-options label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.direction-options label:hover {
+    transform: scale(1.15);
+}
+
+/* Hide the native checkbox */
+.direction-options input[type="checkbox"] {
+    display: none;
+}
+
+/* Arrow styling */
+.small-arrow {
+    width: 50px;
+    height: 50px;
+    color: #a0a0a0;
+    transform-origin: center center;
+    transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+/* Active and inactive states */
+.direction-options input[type="checkbox"]:checked + .small-arrow {
+    color: #667eea;
+    opacity: 1;
+}
+
+.direction-options input[type="checkbox"] + .small-arrow {
+    opacity: 0.4;
+}
+
+/* Optional: fade-in animation when panel expands */
+.settings-content:not(.collapsed) .direction-options {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.settings-content.collapsed .direction-options {
+    opacity: 0;
+}
+
+/* Error message */
 .error-message {
     color: #dc3545;
     font-size: 0.85em;
     margin-top: 10px;
     min-height: 20px;
     display: none;
+    text-align: center;
 }
 
 .error-message.show {
     display: block;
 }
 
-/* Mobile optimizations */
+/* Responsive */
 @media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-    
-    header {
-        padding: 25px 15px;
-    }
-    
-    header h1 {
-        font-size: 1.6em;
-    }
-    
-    header p {
-        font-size: 0.9em;
-    }
-    
-    main {
-        padding: 30px 15px;
-    }
-    
-    .arrow-container {
-        width: 180px;
-        height: 180px;
-    }
-    
-    .arrow {
-        width: 140px;
-        height: 140px;
-    }
-    
-    .direction-text {
-        font-size: 1.6em;
-        letter-spacing: 1px;
-    }
-    
-    .countdown {
-        font-size: 0.9em;
-    }
-    
-    .controls {
-        flex-direction: column;
-    }
-    
-    .btn {
-        width: 100%;
-    }
-    
-    .settings {
-        padding: 15px;
-        margin-top: 15px;
-    }
-    
-    .setting-group {
-        margin-bottom: 12px;
-    }
+    body { padding: 10px; }
+    header { padding: 25px 15px; }
+    header h1 { font-size: 1.6em; }
+    header p { font-size: 0.9em; }
+    main { padding: 30px 15px; }
+    .arrow-container { width: 180px; height: 180px; }
+    .arrow { width: 140px; height: 140px; }
+    .direction-text { font-size: 1.6em; letter-spacing: 1px; }
+    .countdown { font-size: 0.9em; }
+    .controls { flex-direction: column; }
+    .btn { width: 100%; }
+    .settings { padding: 15px; margin-top: 15px; }
+    .setting-group { margin-bottom: 12px; }
 }
 
 @media (max-width: 400px) {
-    .arrow-container {
-        width: 150px;
-        height: 150px;
-    }
-    
-    .arrow {
-        width: 120px;
-        height: 120px;
-        color: #000;
-    }
-    
-    .direction-text {
-        font-size: 1.4em;
-    }
+    .arrow-container { width: 150px; height: 150px; }
+    .arrow { width: 120px; height: 120px; color: #000; }
+    .direction-text { font-size: 1.4em; }
 }
 
-/* Dark mode styles */
+/* Dark mode */
 body.dark-mode {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 }
 
-body.dark-mode .container {
-    background: #2d2d44;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-body.dark-mode .arrow {
-    color: #e0e0e0;
-}
-
-body.dark-mode .arrow-container {
-    background: #3a3a52;
-}
-
-body.dark-mode .countdown-display {
-    color: #b0b0b0;
-}
-
-body.dark-mode .settings {
-    background: #3a3a52;
-}
-
-body.dark-mode .settings-header {
-    color: #e0e0e0;
-    border-bottom-color: #4a4a62;
-}
-
-body.dark-mode .settings-header:hover {
-    background: #4a4a62;
-}
-
-body.dark-mode .collapse-btn {
-    color: #b0b0b0;
-}
-
-body.dark-mode .collapse-btn:hover {
-    color: #e0e0e0;
-}
-
-body.dark-mode .setting-group label {
-    color: #e0e0e0;
-}
-
-body.dark-mode .setting-group input[type="number"] {
-    background: #2d2d44;
-    border-color: #4a4a62;
-    color: #e0e0e0;
-}
-
-body.dark-mode .setting-group input[type="number"]:focus {
-    border-color: #667eea;
-    background: #35354a;
-}
-
-body.dark-mode .toggle-label {
-    color: #e0e0e0;
-}
-
-body.dark-mode .error-message {
-    color: #ff6b6b;
-    background: #3a2a2a;
-    padding: 10px;
-    border-radius: 5px;
-}
-
+body.dark-mode .container { background: #2d2d44; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+body.dark-mode .arrow { color: #e0e0e0; }
+body.dark-mode .arrow-container { background: #3a3a52; }
+body.dark-mode .countdown-display { color: #b0b0b0; }
+body.dark-mode .settings { background: #3a3a52; }
+body.dark-mode .settings-header { color: #e0e0e0; border-bottom-color: #4a4a62; }
+body.dark-mode .settings-header:hover { background: #4a4a62; }
+body.dark-mode .collapse-btn { color: #b0b0b0; }
+body.dark-mode .collapse-btn:hover { color: #e0e0e0; }
+body.dark-mode .setting-group label { color: #e0e0e0; }
+body.dark-mode .setting-group input[type="number"] { background: #2d2d44; border-color: #4a4a62; color: #e0e0e0; }
+body.dark-mode .setting-group input[type="number"]:focus { border-color: #667eea; background: #35354a; }
+body.dark-mode .toggle-label { color: #e0e0e0; }
+body.dark-mode .error-message { color: #ff6b6b; padding: 10px; border-radius: 5px; }
+body.dark-mode .direction-options input[type="checkbox"]:checked + .small-arrow { color: #aab4ff; }
