@@ -12,9 +12,7 @@
             <div class="direction-display">
                 <div class="arrow-container">
                     <svg id="arrow" class="arrow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Solid arrow: rectangular shaft with rounded corners -->
                         <rect x="30" y="88" width="85" height="24" rx="4" ry="4" fill="currentColor" />
-                        <!-- Even larger triangular arrowhead -->
                         <polygon points="110,65 110,135 170,100" fill="currentColor" />
                     </svg>
                 </div>
@@ -22,7 +20,7 @@
                     Next change in: <span id="countdownText">0</span>s
                 </div>
             </div>
-            
+
             <div class="settings">
                 <div class="settings-header">
                     <span>Settings</span>
@@ -32,6 +30,7 @@
                         </svg>
                     </button>
                 </div>
+
                 <div class="settings-content" id="settingsContent">
                     <div class="setting-group">
                         <label for="darkMode" class="toggle-label">
@@ -53,13 +52,61 @@
                         <label for="maxInterval">Max Interval (seconds):</label>
                         <input type="number" id="maxInterval" min="1" max="60" value="5" />
                     </div>
+
+                    <!-- Direction selection -->
+                    <div class="setting-group">
+                        <label>Enabled Directions:</label>
+                        <div id="directionOptions" class="direction-options">
+                            <label>
+                              <input type="checkbox" value="Northwest" checked>
+                              <svg class="small-arrow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-135deg);">
+                                <rect x="30" y="88" width="85" height="24" rx="4" ry="4" fill="currentColor" />
+                                <polygon points="110,65 110,135 170,100" fill="currentColor" />
+                              </svg>
+                            </label>
+                            <label>
+                              <input type="checkbox" value="Northeast" checked>
+                              <svg class="small-arrow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-45deg);">
+                                <rect x="30" y="88" width="85" height="24" rx="4" ry="4" fill="currentColor" />
+                                <polygon points="110,65 110,135 170,100" fill="currentColor" />
+                              </svg>
+                            </label>
+                          
+                            <label>
+                              <input type="checkbox" value="West" checked>
+                              <svg class="small-arrow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
+                                <rect x="30" y="88" width="85" height="24" rx="4" ry="4" fill="currentColor" />
+                                <polygon points="110,65 110,135 170,100" fill="currentColor" />
+                              </svg>
+                            </label>
+                            <label>
+                              <input type="checkbox" value="East" checked>
+                              <svg class="small-arrow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="30" y="88" width="85" height="24" rx="4" ry="4" fill="currentColor" />
+                                <polygon points="110,65 110,135 170,100" fill="currentColor" />
+                              </svg>
+                            </label>
+                          
+                            <label>
+                              <input type="checkbox" value="Southwest" checked>
+                              <svg class="small-arrow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(135deg);">
+                                <rect x="30" y="88" width="85" height="24" rx="4" ry="4" fill="currentColor" />
+                                <polygon points="110,65 110,135 170,100" fill="currentColor" />
+                              </svg>
+                            </label>
+                            <label>
+                              <input type="checkbox" value="Southeast" checked>
+                              <svg class="small-arrow" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
+                                <rect x="30" y="88" width="85" height="24" rx="4" ry="4" fill="currentColor" />
+                                <polygon points="110,65 110,135 170,100" fill="currentColor" />
+                              </svg>
+                            </label>
+                        </div>
                     <div class="error-message" id="errorMessage"></div>
                 </div>
             </div>
         </main>
     </div>
-    
     <script src="script.js"></script>
 </body>
 </html>
-

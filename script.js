@@ -32,10 +32,20 @@ document.addEventListener('DOMContentLoaded', function() {
     let timeRemaining = 0;
     let nextChangeTime = 0;
     
-    function getRandomDirection() {
-        return Math.floor(Math.random() * directions.length);
+
+    function getEnabledDirections() {
+        const checkboxes = document.querySelectorAll('#directionOptions input[type="checkbox"]:checked');
+        const enabledNames = Array.from(checkboxes).map(cb => cb.value);
+        return directions.filter(d => enabledNames.includes(d.name));
     }
     
+    function getRandomDirection() {
+        const enabled = getEnabledDirections();
+        if (enabled.length === 0) return null;
+        const randomIndex = Math.floor(Math.random() * enabled.length);
+        return enabled[randomIndex];
+    }
+
     // Function to validate and update intervals
     function updateIntervals() {
         let min = parseInt(minIntervalInput.value) || 1;
@@ -98,11 +108,27 @@ document.addEventListener('DOMContentLoaded', function() {
         const randomMs = Math.random() * (maxMs - minMs) + minMs;
         return Math.floor(randomMs); // Return in milliseconds
     }
+
+    // --- Prevent deselecting all directions ---
+    document.querySelectorAll('#directionOptions input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+            const checked = document.querySelectorAll('#directionOptions input[type="checkbox"]:checked');
+            if (checked.length === 0) {
+                cb.checked = true;
+                showError('At least one direction must be selected.');
+            } else {
+                hideError();
+            }
+        });
+    });
     
     // Function to update the arrow direction
     function updateDirection() {
-        currentDirection = getRandomDirection();
-        const direction = directions[currentDirection];
+        const direction = getRandomDirection();
+        if (!direction) {
+            showError('At least one direction must remain selected.');
+            return; // stop here, don’t animate
+        }
         
         // Remove all transitions for instant changes
         arrow.style.transition = 'none';
