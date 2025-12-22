@@ -79,6 +79,7 @@ main {
     width: 160px;
     height: 160px;
     transform-origin: center center;
+    color: #36454F;
 }
 
 .direction-text {
@@ -403,4 +404,65 @@ body.dark-mode .direction-options input[type="checkbox"]:checked + .small-arrow 
   
 .fullscreen-btn:active {
     transform: scale(1.0);
+}
+
+/* Fullscreen overlay */
+.fullscreen-view { 
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white; /* overridden in JS for dark mode */
+    z-index: 1000;
+}
+
+/* Hide by default */
+.hidden { display: none; }
+
+/* Fullscreen arrow container for pop animation */
+.fullscreen-arrow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    transition: transform 1.2s ease-out;
+}
+
+.large-arrow {
+    width: 100%;
+    height: 100%;
+}
+
+/* Exit fullscreen X (top-right corner) */
+.exit-fullscreen {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.exit-fullscreen:hover {
+    color: #667eea;
+    transform: scale(1.1);
+}
+
+/* Dark mode for fullscreen */
+body.dark-mode .fullscreen-view {
+    background: #2d2d44;
+}
+
+body.dark-mode .fullscreen-view .large-arrow {
+    color: #e0e0e0;
 }
