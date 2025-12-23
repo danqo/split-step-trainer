@@ -466,3 +466,22 @@ body.dark-mode .fullscreen-view {
 body.dark-mode .fullscreen-view .large-arrow {
     color: #e0e0e0;
 }
+
+.fullscreen-progress {
+    position: absolute;
+    bottom: 30px;
+    left: 10%;
+    width: 80%;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.2); /* track */
+    border-radius: 6px;
+    overflow: hidden;
+    display: none; /* default hidden */
+}
+
+#fullscreen-progress-bar {
+    height: 100%;
+    width: 100%; /* full initially */
+    background-color: #4caf50; /* initial full color */
+    transition: width 0.1s ease-out, background-color 0.2s linear; /* smooth width and color change */
+}
