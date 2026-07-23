@@ -2,6 +2,8 @@
 
 A simple, beautiful web application ready for deployment on Netlify.
 
+https://split-step-trainer.netlify.app/
+
 ## 🚀 Features
 
 - Modern, responsive design
